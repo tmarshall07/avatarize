@@ -8,8 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
     "next": "9.3.5",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-color": "^2.18.0",
+    "react-dom": "16.13.1",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   }
 }
