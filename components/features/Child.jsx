@@ -31,6 +31,8 @@ function Child(props) {
         <path
           d={element.attributes?.d}
           style={{
+            strokeWidth: element.attributes?.['stroke-width'],
+            stroke: element.attributes?.stroke,
             fill: colors[colorKey]?.color || element.attributes?.style?.fill || null,
           }}
         />

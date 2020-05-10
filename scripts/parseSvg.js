@@ -4,7 +4,7 @@ const prettier = require('prettier');
 const { parse } = require('svgson');
 const uuid = require('uuid').v1;
 
-const svg = fs.readFileSync(path.join(__dirname, '../svgs/avatars.svg'), 'utf8');
+const svg = fs.readFileSync(path.join(__dirname, '../svgs/avatar.svg'), 'utf8');
 
 const writeDataFile = (svgson, id) => {
   // Get heads by id

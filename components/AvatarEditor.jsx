@@ -58,8 +58,9 @@ function AvatarEditor(props) {
   const handleRandomize = () => {
     setCurrentHead(randomFromArray(heads));
     setCurrentFace(randomFromArray(faces));
-    setCurrentFacialHair(randomFromArray(facialhair));
-    setCurrentGlasses(randomFromArray(glasses));
+    // Add empty items to array to make it a 50% chance for facial hair, glasses, etc.
+    setCurrentFacialHair(randomFromArray([...(new Array(facialhair.length)), ...facialhair]));
+    setCurrentGlasses(randomFromArray([...(new Array(glasses.length)), ...glasses]));
 
     setColors({
       hair: randomFromArray(hairTones),
@@ -93,6 +94,13 @@ function AvatarEditor(props) {
         </Box>
 
         <Box width="60%" maxHeight={600} style={{ flex: 1, overflow: 'auto' }}>
+
+          <ElementPicker
+            title="Heads"
+            currentElement={currentHead}
+            elements={heads}
+            handleChange={handleChangeHead}
+          />
           <Flex justifyContent="space-between">
             <ColorPickerContainer>
               <h3>Hair</h3>
@@ -116,12 +124,6 @@ function AvatarEditor(props) {
             </Box>
           </Flex>
 
-          <ElementPicker
-            title="Heads"
-            currentElement={currentHead}
-            elements={heads}
-            handleChange={handleChangeHead}
-          />
           <ElementPicker
             title="Face"
             currentElement={currentFace}

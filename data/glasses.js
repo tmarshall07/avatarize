@@ -9,7 +9,7 @@ const data = [
       style: {},
     },
     children: [],
-    id: '87e4eb36-92d4-11ea-b171-6d5f6e25b4eb',
+    id: '3f8d220d-92f8-11ea-9672-5780c4542c96',
   },
   {
     name: 'path',
@@ -21,7 +21,7 @@ const data = [
       style: {},
     },
     children: [],
-    id: '87e4eb37-92d4-11ea-b171-6d5f6e25b4eb',
+    id: '3f8d220e-92f8-11ea-9672-5780c4542c96',
   },
   {
     name: 'path',
@@ -33,7 +33,7 @@ const data = [
       style: {},
     },
     children: [],
-    id: '87e4eb38-92d4-11ea-b171-6d5f6e25b4eb',
+    id: '3f8d220f-92f8-11ea-9672-5780c4542c96',
   },
   {
     name: 'g',
@@ -51,7 +51,7 @@ const data = [
           style: { fill: '#fff' },
         },
         children: [],
-        id: '87e4eb3a-92d4-11ea-b171-6d5f6e25b4eb',
+        id: '3f8d2211-92f8-11ea-9672-5780c4542c96',
       },
       {
         name: 'path',
@@ -63,10 +63,10 @@ const data = [
           style: {},
         },
         children: [],
-        id: '87e4eb3b-92d4-11ea-b171-6d5f6e25b4eb',
+        id: '3f8d2212-92f8-11ea-9672-5780c4542c96',
       },
     ],
-    id: '87e4eb39-92d4-11ea-b171-6d5f6e25b4eb',
+    id: '3f8d2210-92f8-11ea-9672-5780c4542c96',
   },
 ];
 export default data;
