@@ -5,15 +5,19 @@ import Child from './features/Child';
 
 function SvgCanvas(props) {
   const {
+    head,
     face,
-    expression,
+    facialhair,
+    glasses,
     colors,
   } = props;
 
   return (
     <svg width="100%" height="100%" viewBox="0 0 1535 1535">
+      <Child element={head} colors={colors} />
       <Child element={face} colors={colors} />
-      <Child element={expression} colors={colors} />
+      <Child element={facialhair} colors={colors} />
+      <Child element={glasses} colors={colors} />
     </svg>
   );
 }

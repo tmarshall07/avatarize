@@ -9,6 +9,8 @@ import Child from '../features/Child';
 const ElementButton = styled.div`
   padding: 10px;
   border-radius: 3px;
+  display: inline-block;
+  background-color: white;
 
   margin: 10px;
 
@@ -24,22 +26,39 @@ const ElementButton = styled.div`
   `}
 `;
 
+const OptionsContainer = styled(Box)`
+  max-height: 210px;
+  overflow-x: auto;
+  background: #fbfbfb;
+  border-radius: 3px;
+  white-space: nowrap;
+`;
+
 function ElementPicker(props) {
   const {
     elements,
     currentElement,
     title,
     handleChange,
+    isRequired,
   } = props;
+
+  const handleSelectElement = (element) => {
+    if (!isRequired && currentElement.id === element.id) {   
+      handleChange();
+    } else {
+      handleChange(element);
+    }
+  }
 
   return (
     <Box>
       <h3>{title}</h3>
-      <Flex>
+      <OptionsContainer>
         {elements.map((element) => (
           <ElementButton
             key={element.id}
-            onClick={() => handleChange(element)}
+            onClick={() => handleSelectElement(element)}
             isActive={currentElement.id === element.id}
           >
             {/* {element.id} */}
@@ -50,13 +69,19 @@ function ElementPicker(props) {
             </Box>
           </ElementButton>
         ))}
-      </Flex>
+      </OptionsContainer>
     </Box>
   );
 }
 
 ElementPicker.propTypes = {
+  isRequired: PropTypes.bool,
+  currentElement: PropTypes.shape({}),
+};
 
+ElementPicker.defaultProps = {
+  isRequired: true,
+  currentElement: {},
 };
 
 export default ElementPicker;

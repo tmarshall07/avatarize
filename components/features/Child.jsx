@@ -7,24 +7,31 @@ function Child(props) {
     colors,
   } = props;
 
+  // Pull color key
+  const id = element.attributes?.['serif:id'];
+  let colorKey = null;
+  if (id && id.split('-')[0] === 'color') {
+    colorKey = id.split('-')[1];
+  }
+
   return (
     <>
-      {element.type === 'g' && (
+      {element.name === 'g' && (
         <g>
-          {element.children?.map((child) => (
+          {element.children?.map((child, i) => (
             <Child
-              key={child.id}
+              key={i}
               element={child}
               colors={colors}
             />
           ))}
         </g>
       )}
-      {element.type === 'path' && (
+      {element.name === 'path' && (
         <path
-          d={element.d}
+          d={element.attributes?.d}
           style={{
-            fill: colors[element.colorKey] || element.style?.fill || null,
+            fill: colors[colorKey]?.color || element.attributes?.style?.fill || null,
           }}
         />
       )}
@@ -34,10 +41,15 @@ function Child(props) {
 
 Child.propTypes = {
   colors: PropTypes.shape({}),
+  element: PropTypes.shape({
+    name: PropTypes.string,
+    attributes: PropTypes.shape({}),
+  }),
 };
 
 Child.defaultProps = {
   colors: {},
+  element: {},
 };
 
 export default Child;
