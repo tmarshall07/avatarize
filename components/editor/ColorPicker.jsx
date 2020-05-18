@@ -5,7 +5,7 @@ import { faPalette } from '@fortawesome/pro-duotone-svg-icons';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons';
 import PropTypes from 'prop-types';
 import { v1 as uuid } from 'uuid';
-import { ChromePicker, CirclePicker } from 'react-color';
+import { ChromePicker } from 'react-color';
 import { lighten, darken } from 'polished';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -67,7 +67,7 @@ function ColorPicker(props) {
     setIsVisible,
     color,
     onChange,
-    colors,
+    avatarColors,
   } = props;
 
   const [customColor, setCustomColor] = useState('');
@@ -88,8 +88,13 @@ function ColorPicker(props) {
   return (
     <Box>
       <Flex flexWrap="wrap" maxWidth="36rem">
-        {colors.map((c) => (
-          <ColorPreview active={color.id === c.id} onClick={() => handleSelectColor(c)} color={c.color}>
+        {avatarColors.map((c) => (
+          <ColorPreview
+            key={c.id}
+            active={color.id === c.id}
+            onClick={() => handleSelectColor(c)}
+            color={c.color}
+          >
             <AnimatePresence>
               {color.id === c.id && (
                 <motion.div
@@ -104,7 +109,7 @@ function ColorPicker(props) {
           </ColorPreview>
         ))}
         <Box position="relative">
-          <CustomColor active={!colors.find((c) => color.id === c.id)} color={customColor} onClick={() => setIsVisible(true)}>
+          <CustomColor active={!avatarColors.find((c) => color.id === c.id)} color={customColor} onClick={() => setIsVisible(true)}>
             <FontAwesomeIcon icon={faPalette} />
           </CustomColor>
           {isVisible && (
@@ -123,11 +128,14 @@ function ColorPicker(props) {
 }
 
 ColorPicker.propTypes = {
-  colors: PropTypes.arrayOf(PropTypes.string),
+  avatarColors: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    color: PropTypes.string,
+  })),
 };
 
 ColorPicker.defaultProps = {
-  colors: [],
+  avatarColors: [],
 };
 
 export default ColorPicker;

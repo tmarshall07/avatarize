@@ -11,8 +11,10 @@ function SvgCanvas(props) {
     face,
     facialhair,
     glasses,
-    colors,
+    svgColors,
   } = props;
+
+  console.log(svgColors)
 
   const controls = useAnimation();
 
@@ -29,35 +31,29 @@ function SvgCanvas(props) {
         initial={false}
         animate={controls}
       > */}
-        <Child element={head} colors={colors} />
+        <Child element={head} colors={svgColors} />
       {/* </motion.g> */}
       {/* <motion.g
         initial={false}
         animate={controls}
       > */}
-        <Child element={face} colors={colors} />
+        <Child element={face} colors={svgColors} />
       {/* </motion.g> */}
-      <Child element={facialhair} colors={colors} />
-      <Child element={glasses} colors={colors} />
+      <Child element={facialhair} colors={svgColors} />
+      <Child element={glasses} colors={svgColors} />
     </svg>
   );
 }
 
 SvgCanvas.propTypes = {
-  colors: PropTypes.shape({
-    hair: PropTypes.shape({
-      id: PropTypes.string,
-      color: PropTypes.string,
-    }),
-    skin: PropTypes.shape({
-      id: PropTypes.string,
-      color: PropTypes.string,
-    }),
+  svgColors: PropTypes.shape({
+    hair: PropTypes.string,
+    skin: PropTypes.string,
   }),
 };
 
 SvgCanvas.defaultProps = {
-  colors: {
+  svgColors: {
     hair: '#d08b5b',
     skin: '#e8e1e1',
   },

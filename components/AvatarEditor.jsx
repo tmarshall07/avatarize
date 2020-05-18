@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
+import { lighten } from 'polished';
 import SvgCanvas from './SvgCanvas';
 import Box from './ui/Box';
 import Button from './ui/Button';
@@ -12,18 +13,39 @@ import faces from '../data/face';
 import facialhair from '../data/facialhair';
 import ElementPicker from './editor/ElementPicker';
 import ColorPicker from './editor/ColorPicker';
-import { skinTones, hairTones } from '../helpers/colors';
+import colors, { skinTones, hairTones } from '../helpers/colors';
+
+const randomBetween = (start, end) => Math.floor(Math.random() * end) + start;
+const randomFromArray = (array) => array[randomBetween(0, array.length)];
 
 const ColorPickerContainer = styled(Box)`
   margin-right: 15px;  
 `;
 
-const Wrapper = styled(Flex)`
-  max-width: 1200px;
+const SelectionContainer = styled(Box)`
+  /* width: 60%; */
+  max-height: 600px;
+  flex: 1;
+  overflow: auto;
+
+  background-color: ${lighten(0.58, colors.grey)};
+  border-radius: 5px;
+  padding: 3rem;
 `;
 
-const randomBetween = (start, end) => Math.floor(Math.random() * end) + start;
-const randomFromArray = (array) => array[randomBetween(0, array.length)];
+const Wrapper = styled(Flex)`
+  max-width: 1200px;
+
+  justify-content: center;
+  align-items: center;
+`;
+
+const AvatarContainer = styled(Box)`
+  height: 40rem;
+  width: 40rem;
+  border-radius: 100%;
+  background-color: ${(props) => props.bg};
+`;
 
 function AvatarEditor(props) {
   const [currentHead, setCurrentHead] = useState(randomFromArray(heads));
@@ -34,7 +56,7 @@ function AvatarEditor(props) {
   const [hairColorPickerVisible, setHairColorPickerVisible] = useState(false);
   const [skinColorPickerVisible, setSkinColorPickerVisible] = useState(false);
 
-  const [colors, setColors] = useState({
+  const [svgColors, setSvgColors] = useState({
     hair: randomFromArray(hairTones).color,
     skin: randomFromArray(skinTones).color,
   });
@@ -62,39 +84,39 @@ function AvatarEditor(props) {
     setCurrentFacialHair(randomFromArray([...(new Array(facialhair.length)), ...facialhair]));
     setCurrentGlasses(randomFromArray([...(new Array(glasses.length)), ...glasses]));
 
-    setColors({
+    setSvgColors({
       hair: randomFromArray(hairTones),
       skin: randomFromArray(skinTones),
     });
   };
 
   const handleColorChange = (key, color) => {
-    setColors({
-      ...colors,
+    setSvgColors({
+      ...svgColors,
       [key]: color,
     });
   };
 
   return (
     <Box>
-      <Box>
-        <Button type="button" onClick={handleRandomize}>
-          Randomize
-        </Button>
-      </Box>
-      <Wrapper>
-        <Box width="30%">
-          <SvgCanvas
-            head={currentHead}
-            face={currentFace}
-            facialhair={currentFacialHair}
-            glasses={currentGlasses}
-            colors={colors}
-          />
+      <Wrapper flexDirection={['column', 'row']}>
+        <Box p="3rem">
+          <AvatarContainer>
+          {/* <AvatarContainer bg={randomFromArray(Object.values(colors))}> */}
+            <SvgCanvas
+              head={currentHead}
+              face={currentFace}
+              facialhair={currentFacialHair}
+              glasses={currentGlasses}
+              svgColors={svgColors}
+            />
+          </AvatarContainer>
+          <Button type="button" onClick={handleRandomize}>
+            Randomize
+          </Button>
         </Box>
 
-        <Box width="60%" maxHeight={600} style={{ flex: 1, overflow: 'auto' }}>
-
+        <SelectionContainer width={['100%', '60%']}>
           <ElementPicker
             title="Heads"
             currentElement={currentHead}
@@ -105,8 +127,8 @@ function AvatarEditor(props) {
             <ColorPickerContainer>
               <h3>Hair</h3>
               <ColorPicker
-                color={colors.hair}
-                colors={hairTones}
+                color={svgColors.hair}
+                avatarColors={hairTones}
                 onChange={(color) => handleColorChange('hair', color)}
                 isVisible={hairColorPickerVisible}
                 setIsVisible={setHairColorPickerVisible}
@@ -115,8 +137,8 @@ function AvatarEditor(props) {
             <Box>
               <h3>Skin</h3>
               <ColorPicker
-                color={colors.skin}
-                colors={skinTones}
+                color={svgColors.skin}
+                avatarColors={skinTones}
                 onChange={(color) => handleColorChange('skin', color)}
                 isVisible={skinColorPickerVisible}
                 setIsVisible={setSkinColorPickerVisible}
@@ -144,7 +166,7 @@ function AvatarEditor(props) {
             handleChange={handleChangeGlasses}
             isRequired={false}
           />
-        </Box>
+        </SelectionContainer>
       </Wrapper>
     </Box>
   );

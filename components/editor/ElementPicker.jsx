@@ -5,12 +5,12 @@ import styled, { css } from 'styled-components';
 import Box from '../ui/Box';
 import Flex from '../ui/Flex';
 import Child from '../features/Child';
+import { H3 } from '../../helpers/typography';
 
 const ElementButton = styled.div`
   padding: 10px;
   border-radius: 3px;
   display: inline-block;
-  background-color: white;
 
   margin: 10px;
 
@@ -23,13 +23,13 @@ const ElementButton = styled.div`
 
   ${(props) => props.isActive && css`
     border: 1px solid rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.05);
   `}
 `;
 
 const OptionsContainer = styled(Box)`
   max-height: 210px;
   overflow-x: auto;
-  background: #fbfbfb;
   border-radius: 3px;
   white-space: nowrap;
 `;
@@ -98,7 +98,7 @@ function ElementPicker(props) {
 
   return (
     <Box>
-      <h3>{title}</h3>
+      <H3 mb={20}>{title}</H3>
       <OptionsContainer>
         {elements.map((element) => (
           <ElementButton
@@ -106,7 +106,6 @@ function ElementPicker(props) {
             onClick={() => handleSelectElement(element)}
             isActive={currentElement.id === element.id}
           >
-            {/* {element.id} */}
             <Box maxWidth={100}>
               <ChildPreview
                 element={element}

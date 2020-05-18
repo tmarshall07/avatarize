@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { lighten, darken } from 'polished';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from '../../helpers/colors';
-import { lighten, darken } from 'polished';
 
 const Container = styled.button`
   border-radius: 3px;
@@ -35,12 +35,11 @@ function Button(props) {
     <Container {...props}>
       {children}
     </Container>
-  )
+  );
 }
 
 Button.propTypes = {
 
-}
+};
 
-export default Button
-
+export default Button;
