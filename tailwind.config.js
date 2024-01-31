@@ -1,7 +1,4 @@
-const { lighten, darken } = require('polished');
-
-const primary = '#3fb25d';
-const accent = '#B23F94';
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -40,24 +37,8 @@ module.exports = {
         6: '6.4rem',
       },
       colors: {
-        primary,
-        'primary-100': lighten(0.57, primary),
-        'primary-200': lighten(0.43, primary),
-        'primary-300': lighten(0.29, primary),
-        'primary-400': lighten(0.14, primary),
-        'primary-500': primary,
-        'primary-600': darken(0.14, primary),
-        'primary-700': darken(0.29, primary),
-        'primary-800': darken(0.43, primary),
-        accent,
-        'accent-100': lighten(0.57, accent),
-        'accent-200': lighten(0.43, accent),
-        'accent-300': lighten(0.29, accent),
-        'accent-400': lighten(0.14, accent),
-        'accent-500': accent,
-        'accent-600': darken(0.14, accent),
-        'accent-700': darken(0.29, accent),
-        'accent-800': darken(0.43, accent),
+        primary: colors.blue,
+        base: colors.slate,
       },
       borderWidth: {
         1: '1px',

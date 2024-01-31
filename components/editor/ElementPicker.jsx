@@ -1,43 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
 
-import Box from '../ui/Box';
-import Flex from '../ui/Flex';
 import Child from '../features/Child';
-import { H3 } from '../../helpers/typography';
-
-const ElementButton = styled.div`
-  padding: 10px;
-  border-radius: 3px;
-  display: inline-block;
-
-  margin: 10px;
-
-  cursor: pointer;
-  border: 1px solid transparent;
-
-  :hover, :focus {
-    background-color: rgba(0,0,0,0.05);
-  }
-
-  ${(props) => props.isActive && css`
-    border: 1px solid rgba(0,0,0,0.2);
-    background-color: rgba(0,0,0,0.05);
-  `}
-`;
-
-const OptionsContainer = styled(Box)`
-  max-height: 210px;
-  overflow-x: auto;
-  border-radius: 3px;
-  white-space: nowrap;
-`;
+import { Box, H3 } from '@tannerjs/tailwind-theme-rizz/src/index';
 
 function ChildPreview(props) {
-  const {
-    element,
-  } = props;
+  const { element } = props;
 
   const childRef = useRef();
   const [transform, setTransform] = useState('');
@@ -80,13 +47,7 @@ function ChildPreview(props) {
 }
 
 function ElementPicker(props) {
-  const {
-    elements,
-    currentElement,
-    title,
-    handleChange,
-    isRequired,
-  } = props;
+  const { elements, currentElement = {}, title, handleChange, isRequired = true } = props;
 
   const handleSelectElement = (element) => {
     if (!isRequired && currentElement.id === element.id) {
@@ -98,34 +59,22 @@ function ElementPicker(props) {
 
   return (
     <Box>
-      <H3 mb={20}>{title}</H3>
-      <OptionsContainer>
+      <H3 cn="mb-4">{title}</H3>
+      <Box cn="max-h-[210px] overflow-x-auto rounded-md whitespace-nowrap">
         {elements.map((element) => (
-          <ElementButton
+          <Box
+            cn={`p-3 rounded-md inline-block m-3 border-2 border-transparent cursor-pointer hover:bg-base-100 active:bg-base-200 ${currentElement.id === element.id ? 'border-2 border-base-300' : ''}`}
             key={element.id}
             onClick={() => handleSelectElement(element)}
-            isActive={currentElement.id === element.id}
           >
-            <Box maxWidth={100}>
-              <ChildPreview
-                element={element}
-              />
+            <Box cn="max-w-[100px]">
+              <ChildPreview element={element} />
             </Box>
-          </ElementButton>
+          </Box>
         ))}
-      </OptionsContainer>
+      </Box>
     </Box>
   );
 }
-
-ElementPicker.propTypes = {
-  isRequired: PropTypes.bool,
-  currentElement: PropTypes.shape({}),
-};
-
-ElementPicker.defaultProps = {
-  isRequired: true,
-  currentElement: {},
-};
 
 export default ElementPicker;

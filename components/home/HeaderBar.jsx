@@ -1,21 +1,14 @@
 'use client';
 
 import React from 'react';
-import Box from '../ui/Box';
-import { A, P } from '../../helpers/typography';
-import { Button, H1 } from '@tannerjs/tailwind-theme-rizz/src/index';
+import { H1, Box, A, P } from '@tannerjs/tailwind-theme-rizz/src/index';
 
-function HeaderBar(props) {
+function HeaderBar() {
   return (
-    <Box margin="3rem 0 8rem 0">
-      <Button>Hello world</Button>
-      <H1>Avatizer</H1>
-      <P textAlign="center" fontSize={18}>
-        An avatar generator featuring&nbsp;
-        <A href="https://www.instagram.com/pablostanley/" target="_blank" rel="noopener noreferrer">
-          Pablo Stanley&apos;s
-        </A>
-        &nbsp;beautiful&nbsp;
+    <Box cn="flex flex-col gap-3">
+      <H1 cn="text-center sm:text-[64px]">Avatizer</H1>
+      <P cn="text-center">
+        An avatar generator featuring the{' '}
         <A href="https://openpeeps.com" target="_blank" rel="noopener noreferrer">
           Open Peeps library
         </A>

@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useAnimation } from "framer-motion";
-import Child from "./features/Child";
+import React from 'react';
+import { useAnimation } from 'framer-motion';
+import Child from './features/Child';
 
 function SvgCanvas(props) {
-  const { head, face, facialhair, glasses, svgColors } = props;
+  const { head, face, facialhair, glasses, svgColors = { hair: '#d08b5b', skin: '#e8e1e1' } } = props;
 
   console.log(svgColors);
 
@@ -36,19 +35,5 @@ function SvgCanvas(props) {
     </svg>
   );
 }
-
-SvgCanvas.propTypes = {
-  svgColors: PropTypes.shape({
-    hair: PropTypes.string,
-    skin: PropTypes.string,
-  }),
-};
-
-SvgCanvas.defaultProps = {
-  svgColors: {
-    hair: "#d08b5b",
-    skin: "#e8e1e1",
-  },
-};
 
 export default SvgCanvas;

@@ -1,11 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 function Child(props) {
-  const {
-    element,
-    colors,
-  } = props;
+  const { element = {}, colors = {} } = props;
 
   // Pull color key
   const id = element.attributes?.['serif:id'];
@@ -19,11 +15,7 @@ function Child(props) {
       {element.name === 'g' && (
         <g>
           {element.children?.map((child, i) => (
-            <Child
-              key={i}
-              element={child}
-              colors={colors}
-            />
+            <Child key={i} element={child} colors={colors} />
           ))}
         </g>
       )}
@@ -40,18 +32,5 @@ function Child(props) {
     </>
   );
 }
-
-Child.propTypes = {
-  colors: PropTypes.shape({}),
-  element: PropTypes.shape({
-    name: PropTypes.string,
-    attributes: PropTypes.shape({}),
-  }),
-};
-
-Child.defaultProps = {
-  colors: {},
-  element: {},
-};
 
 export default Child;
