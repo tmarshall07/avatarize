@@ -66,24 +66,26 @@ function AvatarEditor() {
   };
 
   return (
-    <Box>
+    <Box cn="bg-primary-200 sm:p-6 p-3">
       <Box cn="flex max-w-[1200px] m-auto justify-center items-center sm:flex-row flex-col gap-4 sm:h-[600px]">
-        <Box cn="p-3 flex flex-col items-center border-1 rounded-xl h-full">
-          <Box cn="h-full rounded-full">
-            <SvgCanvas
-              head={currentHead}
-              face={currentFace}
-              facialhair={currentFacialHair}
-              glasses={currentGlasses}
-              svgColors={svgColors}
-            />
+        <Box cn="flex flex-col items-center h-full">
+          <Box cn="p-3 h-full">
+            <Box cn="h-full rounded-full bg-primary-100">
+              <SvgCanvas
+                head={currentHead}
+                face={currentFace}
+                facialhair={currentFacialHair}
+                glasses={currentGlasses}
+                svgColors={svgColors}
+              />
+            </Box>
           </Box>
-          <Button variant="default" color="primary" cn="text-xl" onClick={handleRandomize}>
-            Randomize
+          <Button cn="text-xl font-paragraph" color="primary" onClick={handleRandomize}>
+            Random Peep
           </Button>
         </Box>
 
-        <Box cn="flex-1 overflow-auto max-h-[600px] bg-base-50 p-3 sm:w-[60%] w-full rounded-xl flex flex-col gap-3">
+        <Box cn="flex-1 overflow-auto max-h-[600px] bg-primary-300 p-3 sm:w-[60%] w-full rounded-xl flex flex-col gap-3">
           <ElementPicker title="Heads" currentElement={currentHead} elements={heads} handleChange={handleChangeHead} />
           <Flex cn="justify-between">
             <Box cn="mr-3 flex flex-col gap-2">

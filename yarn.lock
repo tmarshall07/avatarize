@@ -375,21 +375,21 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tannerjs/tailwind-base@1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@tannerjs/tailwind-base/-/tailwind-base-1.0.10.tgz#44b47574482154195af4f476576c726f5b884063"
-  integrity sha512-e8blLUTO027f0keDbV5BKJfIkyMlRhCu5Fkk6d5fykAH6VwjNCVgoHySryi9fMyEbo7cw5AaUf0SGA8PFq2vlg==
+"@tannerjs/tailwind-base@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@tannerjs/tailwind-base/-/tailwind-base-1.0.11.tgz#754bba4aed5706f8f24df3a8eaf54570d993cafd"
+  integrity sha512-1jM0xNwS9aYU4sO/v76huKcNq8Y8ZIqK0VveNP7udHf3abryOPpvLb9pjh8jY20CU7YkgjzXvGoZnsMpkFB52A==
   dependencies:
     clsx "^2.1.0"
     react "18.2.0"
     tailwind-merge "^2.2.1"
 
-"@tannerjs/tailwind-theme-rizz@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@tannerjs/tailwind-theme-rizz/-/tailwind-theme-rizz-1.0.10.tgz#6e7e06b7318d0b43c678d9f0c4ae965ac60f4b6e"
-  integrity sha512-XeqSuFf6ftMI9q8BJ0a3RTYLZtTUHHNFvGPGrKrbIRz9xoWDKcAWQjsa5YoBczt3glEA/+x3DUdZueSKSJXUmA==
+"@tannerjs/tailwind-theme-rizz@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@tannerjs/tailwind-theme-rizz/-/tailwind-theme-rizz-1.0.12.tgz#a81c5fca329a32ec9df3da8a33e710b99b909781"
+  integrity sha512-7c1Ph+zLlgTAciRA1eOVJ9jVi5hZgc4TIwEDFlYtqBl7QNMQ+3pp2BrxqOnmfTzbl9xvWRQhd+fA/IQ+HEd+ew==
   dependencies:
-    "@tannerjs/tailwind-base" "1.0.10"
+    "@tannerjs/tailwind-base" "1.0.11"
 
 "@types/json-schema@^7.0.12":
   version "7.0.15"

@@ -63,7 +63,7 @@ function ElementPicker(props) {
       <Box cn="max-h-[210px] overflow-x-auto rounded-md whitespace-nowrap">
         {elements.map((element) => (
           <Box
-            cn={`p-3 rounded-md inline-block m-3 border-2 border-transparent cursor-pointer hover:bg-base-100 active:bg-base-200 ${currentElement.id === element.id ? 'border-2 border-base-300' : ''}`}
+            cn={`p-3 rounded-md inline-block m-3 border-2 border-transparent cursor-pointer hover:bg-primary-300 active:bg-primary-400 ${currentElement.id === element.id ? 'border-2 border-primary-500 bg-primary-400 hover:bg-primary-400' : ''}`}
             key={element.id}
             onClick={() => handleSelectElement(element)}
           >

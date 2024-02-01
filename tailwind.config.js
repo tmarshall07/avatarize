@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     fontFamily: {
       mono: ['var(--font-operator-mono)', 'sans'],
-      heading: ['var(--font-supermercado)', 'sans-serif'],
+      heading: ['var(--font-rubik)', 'sans-serif'],
       paragraph: ['var(--font-open-sans)', 'sans-serif'],
     },
     extend: {
@@ -37,7 +37,8 @@ module.exports = {
         6: '6.4rem',
       },
       colors: {
-        primary: colors.blue,
+        primary: colors.violet,
+        secondary: colors.amber,
         base: colors.slate,
       },
       borderWidth: {

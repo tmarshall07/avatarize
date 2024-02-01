@@ -1,19 +1,19 @@
 'use client';
 
 import React from 'react';
-import { H1, Box, A, P } from '@tannerjs/tailwind-theme-rizz/src/index';
+import { H1, Box, A, H4 } from '@tannerjs/tailwind-theme-rizz';
 
 function HeaderBar() {
   return (
-    <Box cn="flex flex-col gap-3">
-      <H1 cn="text-center sm:text-[64px]">Avatizer</H1>
-      <P cn="text-center">
-        An avatar generator featuring the{' '}
-        <A href="https://openpeeps.com" target="_blank" rel="noopener noreferrer">
+    <Box cn="flex flex-col gap-2 bg-primary-800 p-5">
+      <H1 cn="text-secondary-400 text-center sm:text-[128px] text-[64px]">Avatars</H1>
+      <H4 cn="text-primary-100 text-center opacity-75">
+        An avatar generator with the{' '}
+        <A cn="text-primary-100 italic" href="https://openpeeps.com" target="_blank" rel="noopener noreferrer">
           Open Peeps library
         </A>
         .
-      </P>
+      </H4>
     </Box>
   );
 }

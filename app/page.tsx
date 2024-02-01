@@ -5,7 +5,7 @@ import AvatarEditor from '../components/AvatarEditor';
 const page = () => {
   return (
     <div>
-      <main className="bg-white p-6 flex flex-col gap-5">
+      <main className="bg-white flex flex-col">
         <HeaderBar />
         <AvatarEditor />
       </main>
